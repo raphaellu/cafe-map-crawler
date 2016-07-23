@@ -94,7 +94,7 @@ COOKIES_ENABLED = False
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    'dianping.middlewares.RandomUserAgent': 1,
-   'dianping.middlewares.ProxyMiddleware': 100,
+   # 'dianping.middlewares.ProxyMiddleware': 100,
 }
 # DOWNLOADER_MIDDLEWARES = {
 # #    'cnblogs.middlewares.MyCustomDownloaderMiddleware': 543,

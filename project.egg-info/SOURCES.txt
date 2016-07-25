@@ -1,0 +1,14 @@
+setup.py
+dianping/__init__.py
+dianping/items.py
+dianping/middlewares.py
+dianping/pipelines.py
+dianping/settings.py
+dianping/spiders/__init__.py
+dianping/spiders/dianping_spider.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/entry_points.txt
+project.egg-info/pbr.json
+project.egg-info/top_level.txt

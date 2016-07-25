@@ -38,38 +38,38 @@ USER_AGENTS = [
     "Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52"
 ]
 
-# PROXIES = [
-#     {'ip_port': '60.186.189.204:1111', 'user_pass': ''},
-#     {'ip_port': '182.170.97.14:80', 'user_pass': ''},
-#     {'ip_port': '60.13.74.187:843', 'user_pass': ''},
-#     {'ip_port': '120.25.171.183:8080', 'user_pass': ''},
-#     {'ip_port': '119.6.136.122:80', 'user_pass': ''},
-#     {'ip_port': '119.53.135.35:8118', 'user_pass': ''},
-#     {'ip_port': '101.231.250.102:80', 'user_pass': ''},
-#     {'ip_port': '146.148.69.50:80', 'user_pass': ''},
-#     {'ip_port': '47.88.104.219:80', 'user_pass': ''},
-#     {'ip_port': '125.24.124.74:8080', 'user_pass': ''},
-#     {'ip_port': '42.51.4.25:80', 'user_pass': ''},
-#     {'ip_port': '74.208.146.112:80', 'user_pass': ''},
-#     {'ip_port': '60.186.189.204:1111', 'user_pass': ''},
-#     {'ip_port': '113.226.168.224:80', 'user_pass': ''},
-#     {'ip_port': '113.110.251.147:808', 'user_pass': ''},
+PROXIES = [
+    {'ip_port': '60.186.189.204:1111', 'user_pass': ''},
+    {'ip_port': '182.170.97.14:80', 'user_pass': ''},
+    {'ip_port': '60.13.74.187:843', 'user_pass': ''},
+    {'ip_port': '120.25.171.183:8080', 'user_pass': ''},
+    {'ip_port': '119.6.136.122:80', 'user_pass': ''},
+    {'ip_port': '119.53.135.35:8118', 'user_pass': ''},
+    {'ip_port': '101.231.250.102:80', 'user_pass': ''},
+    {'ip_port': '146.148.69.50:80', 'user_pass': ''},
+    {'ip_port': '47.88.104.219:80', 'user_pass': ''},
+    {'ip_port': '125.24.124.74:8080', 'user_pass': ''},
+    {'ip_port': '42.51.4.25:80', 'user_pass': ''},
+    {'ip_port': '74.208.146.112:80', 'user_pass': ''},
+    {'ip_port': '60.186.189.204:1111', 'user_pass': ''},
+    {'ip_port': '113.226.168.224:80', 'user_pass': ''},
+    {'ip_port': '113.110.251.147:808', 'user_pass': ''},
 
-# ]
-HTTP_PROXY = 'http://127.0.0.1:8118'
+]
+
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 32
 
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
 DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
-#CONCURRENT_REQUESTS_PER_DOMAIN = 16
+CONCURRENT_REQUESTS_PER_DOMAIN = 32
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
@@ -94,8 +94,11 @@ COOKIES_ENABLED = False
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    'dianping.middlewares.RandomUserAgent': 1,
-   'dianping.middlewares.ProxyMiddleware': 410,
+   # 'dianping.middlewares.ProxyMiddleware': 100,
+   # 'scrapy_crawlera.CrawleraMiddleware': 600
 }
+CRAWLERA_ENABLED = True
+CRAWLERA_APIKEY = '87b7c17269714d7997d91fea4c334801'
 # DOWNLOADER_MIDDLEWARES = {
 # #    'cnblogs.middlewares.MyCustomDownloaderMiddleware': 543,
 #     'dianping.middlewares.RandomUserAgent': 1,
@@ -118,7 +121,8 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
-AUTOTHROTTLE_ENABLED = True
+AUTOTHROTTLE_ENABLED = False
+DOWNLOAD_TIMEOUT = 300
 # The initial download delay
 # AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies
@@ -136,3 +140,5 @@ AUTOTHROTTLE_ENABLED = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+

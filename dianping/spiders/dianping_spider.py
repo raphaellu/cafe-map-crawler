@@ -7,25 +7,20 @@ class DianpingSpider(scrapy.Spider):
     name = "dianping"
     allowed_domains = ["dianping.com"]
     start_urls = [
-         "http://www.dianping.com/search/category/1/10/r8847",
-         "http://www.dianping.com/search/category/1/10/r5",
-        "http://www.dianping.com/search/category/1/10/r10",
-        "http://www.dianping.com/search/category/1/10/r5939",
-        "http://www.dianping.com/search/category/1/10/r2",
-        "http://www.dianping.com/search/category/1/10/r7",
-        "http://www.dianping.com/search/category/1/10/r8846",
-        "http://www.dianping.com/search/category/1/10/r6",
-        "http://www.dianping.com/search/category/1/10/r9",
-        "http://www.dianping.com/search/category/1/10/r8847",
-        "http://www.dianping.com/search/category/1/10/r1",
-        "http://www.dianping.com/search/category/1/10/r13",
-        "http://www.dianping.com/search/category/1/10/c3580",
-        "http://www.dianping.com/search/category/1/10/r3",
-        "http://www.dianping.com/search/category/1/10/r8",
+        
+        # "http://www.dianping.com/search/category/1/10/r8846",
+        # "http://www.dianping.com/search/category/1/10/r6",
+        # "http://www.dianping.com/search/category/1/10/r9",
+        # "http://www.dianping.com/search/category/1/10/r8847",
+        # "http://www.dianping.com/search/category/1/10/r1",
+        # "http://www.dianping.com/search/category/1/10/r13",
+        # "http://www.dianping.com/search/category/1/10/c3580",
+        # "http://www.dianping.com/search/category/1/10/r3",
+        # "http://www.dianping.com/search/category/1/10/r8",
         "http://www.dianping.com/search/category/1/10/r4",
-        "http://www.dianping.com/search/category/1/10/r5937",
-        "http://www.dianping.com/search/category/1/10/r12",
-        "http://www.dianping.com/search/category/1/10/r5938"
+        # "http://www.dianping.com/search/category/1/10/r5937",
+        # "http://www.dianping.com/search/category/1/10/r12",
+        # "http://www.dianping.com/search/category/1/10/r5938"
     ]
 
     def parse(self, response):

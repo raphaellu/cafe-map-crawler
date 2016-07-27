@@ -1,0 +1,91 @@
+Area (CN),restaurant name, overall rate, average price, Area (EN)
+黄浦,布如咖啡,9.10,30,Huangpu
+黄浦,kudus咖啡(黄浦体育馆店),8.77,34,Huangpu
+黄浦,ONE MORE CUP,8.73,32,Huangpu
+黄浦,星巴克(南车站路店),8.67,36,Huangpu
+黄浦,Hello巴子,8.63,37,Huangpu
+嘉定,爱咖乐,8.90,55,Jiading
+嘉定,Julie's Coffe乔莉咖啡,8.77,27,Jiading
+嘉定,A Café爱咖啡,8.77,63,Jiading
+嘉定,WAFFLE BING,8.63,47,Jiading
+嘉定,Double Shot,8.40,35,Jiading
+长宁,洺媛燕窝下午茶(缤谷广场店),9.10,141,Changning
+长宁,花墙咖啡馆,9.00,39,Changning
+长宁,拾点十分,8.93,43,Changning
+长宁,麒麟猫咪咖啡馆,8.90,54,Changning
+长宁,麒麟猫咪咖啡馆,8.90,54,Changning
+静安,Piupiu cafe 静安服务区(外送),9.03,22,Jingan
+静安,Dream Coffee,9.00,20,Jingan
+静安,李小姐の猫咖啡馆,8.93,36,Jingan
+静安,UDefine Cafe,8.83,36,Jingan
+静安,元生咖啡(北京西路店),8.77,36,Jingan
+杨浦,7TH MOON COFFEE(控江路店),9.00,47,Yangpu
+杨浦,Destiny coffee house,8.93,37,Yangpu
+杨浦,北纬25度精品咖啡,8.83,45,Yangpu
+杨浦,Luka Macaron Cafe(卢卡马卡龙咖...,8.80,51,Yangpu
+杨浦,A&C Cafe and Living,8.73,38,Yangpu
+闸北,koala cafe,8.90,23,Zhabei
+闸北,DOME CAFE,8.87,35,Zhabei
+闸北,外星动物咖啡,8.83,56,Zhabei
+闸北,KOI Thé(上海协信店),8.80,18,Zhabei
+闸北,绘咖啡,8.73,43,Zhabei
+卢湾,MasterD HUB 大咖点小融,9.07,31,Luwan
+卢湾,又見咖啡,9.07,34,Luwan
+卢湾,CAFÉ DE LA VILLE,8.97,40,Luwan
+卢湾,ESSEN COFFEE(海外滩店),8.97,21,Luwan
+卢湾,LA CHANSON至爱香颂(淮海巴春店),8.97,23,Luwan
+虹口,上海往事怀旧照相年代咖啡馆,9.17,190,Hongkou
+虹口,DeerCoffee,9.07,45,Hongkou
+虹口,猫公主的喵星猫咪咖啡馆,9.00,54,Hongkou
+虹口,天堂太远,人间正好,9.00,45,Hongkou
+虹口,Yoopai梦咖慢递咖啡屋,8.93,48,Hongkou
+宝山,DK COTTAGE,9.03,51,Baoshan
+宝山,田荳咖啡(密山路店),8.90,87,Baoshan
+宝山,田荳咖啡(密山路店),8.90,87,Baoshan
+宝山,咖咖奥咖啡厅(红太阳店),8.83,50,Baoshan
+宝山,咖咖奥咖啡厅(红太阳店),8.83,50,Baoshan
+崇明,长岛咖啡馆,7.97,31,Chongming
+崇明,星巴克(崇明八一广场店),7.33,30,Chongming
+崇明,夏日沫沫茶,7.27,20,Chongming
+崇明,皇邸中西简餐(壹街区店),7.20,52,Chongming
+崇明,歌顿咖啡(堡镇店),7.13,47,Chongming
+青浦,魔嘟后花院,8.47,54,Qingpu
+青浦,星巴克(朱家角尚都里店),8.33,34,Qingpu
+青浦,Meow Cafe猫咪咖啡屋,8.27,43,Qingpu
+青浦,Cocoa Colony(奥特莱斯店),8.07,38,Qingpu
+青浦,太平洋咖啡(米格天地店),7.77,31,Qingpu
+浦东,TC,9.13,56,Pudong
+浦东,HOODOGCAFE宠物咖啡(狗狗咖啡馆),9.10,70,Pudong
+浦东,Melax cafe,9.03,34,Pudong
+浦东,MOON SPACE梦空间(联洋店),8.97,45,Pudong
+浦东,Double Win Cafe,8.90,20,Pudong
+松江,喵了个咪名猫咖啡馆,9.03,28,Songjiang
+松江,Bromeo Cafe男闺蜜咖啡馆,8.97,40,Songjiang
+松江,塔布花园,8.90,32,Songjiang
+松江,Milk and Honey蜜食(九亭店),8.90,55,Songjiang
+松江,啡雪(slow snow)(九亭店),8.77,40,Songjiang
+普陀,麦隆咖啡mellower coffee(弘基店...,8.67,57,Putuo
+普陀,Joyce Coffee,8.63,51,Putuo
+普陀,UNDEFINE,8.53,46,Putuo
+普陀,Ellen's Cafe,8.47,65,Putuo
+普陀,麒麟猫咪主题餐厅咖啡馆(长寿店),8.47,52,Putuo
+金山,zoo coffee(金山石化店),8.83,46,Jinshan
+金山,与猫共舞咖啡吧,8.57,35,Jinshan
+金山,念咖啡,8.13,28,Jinshan
+金山,韩食小屋,7.93,38,Jinshan
+金山,@Some Coffee(金山万达店),7.87,45,Jinshan
+奉贤,seven cats,8.70,31,Fengxian
+奉贤,埃塞尔咖啡Cafe de Ethel,8.67,36,Fengxian
+奉贤,凡·花园(奉浦店),8.63,87,Fengxian
+奉贤,小凡花园,8.33,64,Fengxian
+奉贤,妈妈咪呀主题咖啡馆,8.20,61,Fengxian
+闵行,咖星人E·T COFFEE,8.87,35,Minhang
+闵行,HOLIC U COFFEE,8.83,50,Minhang
+闵行,K3 COFFEE,8.77,36,Minhang
+闵行,星巴克(老闵行生活广场店),8.67,36,Minhang
+闵行,咖咖奥咖啡厅(丽宝广场店),8.60,57,Minhang
+徐汇,ivisa cafe&bar咖啡&酒吧(咖啡&...,9.00,58,Xuhui
+徐汇,Grace Story,9.00,47,Xuhui
+徐汇,老典家怀旧古董西洋茶,8.90,155,Xuhui
+徐汇,falan家居咖啡馆,8.90,38,Xuhui
+徐汇,咖啡博物馆,8.87,53,Xuhui

@@ -17,7 +17,7 @@ class DianpingSpider(scrapy.Spider):
         # "http://www.dianping.com/search/category/1/10/c3580",
         # "http://www.dianping.com/search/category/1/10/r3",
         # "http://www.dianping.com/search/category/1/10/r8",
-        "http://www.dianping.com/search/category/1/10/r4",
+        # "http://www.dianping.com/search/category/1/10/r4",
         # "http://www.dianping.com/search/category/1/10/r5937",
         # "http://www.dianping.com/search/category/1/10/r12",
         # "http://www.dianping.com/search/category/1/10/r5938"

@@ -8,7 +8,6 @@ client = MongoClient()
 db = client.restaurants
 
 baoshan = db.baoshan.find()
-# print baoshan
 changning = db.changning.find()
 chongming = db.chongming.find()
 fengxian = db.fengxian.find()
@@ -80,34 +79,140 @@ class ProcessData:
           count = 0
           price = 0
           for store in all_districts[district]:
-              if store['dish_type'] == u'咖啡厅' and store['price'] != '-':
+              if (store['dish_type'] == u'咖啡厅' or store['dish_type'] == u'面包甜点') and store['price'] != '-':
                   count += 1
                   price += int(store['price'])
           fo.write(district + "," + str(count) + "," + names[district] + "\n")
-    
+        fo.close()    
     #list of top 5 restaurants in every district of Shanghai
     def best_restaurants(self): 
         global all_districts
         global names
-
-        
         fo = open("best_restaurants.csv", "wb")
-        fo.write("Area (CN),restaurant name, overall rate, average price, Area (EN)\n")
+        fo.write("Area (CN),restaurant name, overall rate, average price, num of comments, Area (EN)\n")
         for district in all_districts:
             heap = []
             for store in all_districts[district]:
-                if store['dish_type'] == u'咖啡厅' and store['price'] != '-':
+                if (store['dish_type'] == u'咖啡厅' or store['dish_type'] == u'面包甜点') and store['price'] != '-' and int(store['num_comment']) >= 600: 
                     s = Store(store)
                     heappush(heap, s)
-                    
-            for i in range(0, 5):
+
+            unique_stores = set([])      
+            while len(unique_stores) < 5 and len(heap) > 0:
                 s = heappop(heap)
                 title = u''.join(s.title).encode('utf-8').strip()
                 price = u''.join(s.price).encode('utf-8').strip()
-                fo.write (district + "," + title + "," + str("%.2f" %((float(s.flavor_rate) + float(s.env_rate) +float(s.srv_rate))/3.)) + "," + price + "," + names[district] + "\n")
-                    
+                num_comment = u''.join(s.num_comment).encode('utf-8').strip()
+                unique_stores.add(district + "," + title + "," + str("%.2f" %((float(s.flavor_rate) + float(s.env_rate) +float(s.srv_rate))/3.)) + "," + price + "," + num_comment + "," + names[district] + "\n")
+            for entry in unique_stores:
+                fo.write(entry)    
+        fo.close()
 
+    def avg_comments_rate(self):
+        global all_districts
+        global names
+        fo = open("avg_comments_rate.csv", "wb")
+        fo.write("Area (CN), average num of comments, average rate, Area (EN)\n")
+        for district in all_districts:
+            count = 0
+            comments = 0
+            rate = 0.
+            for store in all_districts[district]:
+                if (
+                        (store['dish_type'] == u'咖啡厅' or store['dish_type'] == u'面包甜点') and 
+                        store['price'] != '-' and store['srv_rate'] != '-' and 
+                        store['env_rate'] != '-' and store['flavor_rate'] != '-'
+                    ):
+                    count += 1
+                    comments += int(store['num_comment'])
+                    rate += (float(store['flavor_rate']) + float(store['env_rate']) +float(store['srv_rate']))/3.
+            print str(count) + district
+            fo.write(district + "," + str(int(comments/count)) + "," + str("%.2f" % (rate/float(count))) + "," + names[district] + "\n")
+        fo.close()
+
+
+    def avg_price(self):
+        global all_districts
+        global names
+        fo = open("avg_price.csv", "wb")
+        fo.write("Area (CN), average price, Area (EN)\n")
+        for district in all_districts:
+            count = 0
+            price = 0
+            for store in all_districts[district]:
+                if (store['dish_type'] == u'咖啡厅' or store['dish_type'] == u'面包甜点') and store['price'] != '-':
+                    count += 1
+                    price += int(store['price'])
+                    # if district == "徐汇":
+                        # print store['price'] + store['title']
+            fo.write(district + "," + str(price/count) + "," + names[district] + "\n")
+        fo.close()
+
+
+    def ratio_diff_rate(self):
+        global all_districts
+        global names
+        fo = open("ratio_diff_rate.csv", "wb")
+        fo.write("Area (CN), avg flv ratio, avg srv ratio, avg env ratio, Area (EN)\n")
+        for district in all_districts:
+            count = 0
+            # rate = 0.
+            flv_rate = 0.
+            srv_rate = 0.
+            env_rate = 0.
+            for store in all_districts[district]:
+                if (
+                        (store['dish_type'] == u'咖啡厅' or store['dish_type'] == u'面包甜点') and 
+                        store['price'] != '-' and int(store['num_comment']) >= 200 and 
+                        store['srv_rate'] != '-' and store['env_rate'] != '-' and store['flavor_rate'] != '-'
+                    ):
+                    count += 1
+                    tmp = (float(store['flavor_rate']) + float(store['env_rate']) + float(store['srv_rate']))/3.
+                    if tmp >= 0:
+                        # rate += tmp
+                        flv_rate += float(store['flavor_rate'])
+                        env_rate += float(store['env_rate'])   
+                        srv_rate += float(store['srv_rate']) 
+            # print str(count) + district
+            fo.write(district + "," + str("%.3f" %(flv_rate/float(count))) + "," 
+                + str("%.3f" % (srv_rate/float(count))) + "," + str("%.3f" %(env_rate/float(count))) + "," 
+                + names[district] + "\n")
+        fo.close()
+
+    def ratio_diff_rate_general(self):
+        global all_districts
+        global names
+        fo = open("ratio_diff_rate_general.csv", "wb")
+        fo.write("Area (CN), avg flv ratio, avg srv ratio, avg env ratio, Area (EN)\n")
+        for district in all_districts:
+            count = 0
+            # rate = 0.
+            flv_rate = 0.
+            srv_rate = 0.
+            env_rate = 0.
+            for store in all_districts[district]:
+                if (
+                        store['price'] != '-' and int(store['num_comment']) >= 200 and 
+                        store['srv_rate'] != '-' and store['env_rate'] != '-' and store['flavor_rate'] != '-'
+                    ):
+                    count += 1
+                    tmp = (float(store['flavor_rate']) + float(store['env_rate']) + float(store['srv_rate']))/3.
+                    if tmp >= 0:
+                        # rate += tmp
+                        flv_rate += float(store['flavor_rate'])
+                        env_rate += float(store['env_rate'])   
+                        srv_rate += float(store['srv_rate']) 
+            # print str(count) + district
+            fo.write(district + "," + str("%.3f" %(flv_rate/float(count))) + "," 
+                + str("%.3f" % (srv_rate/float(count))) + "," + str("%.3f" %(env_rate/float(count))) + "," 
+                + names[district] + "\n")
+        fo.close()
 
 if __name__ == '__main__':
     pd = ProcessData()
-    pd.best_restaurants()
+    # pd.cafe_count()
+    # pd.best_restaurants()
+    # pd.avg_comments_rate()
+    # pd.avg_price()
+    # pd.ratio_diff_rate()
+    pd.ratio_diff_rate_general()

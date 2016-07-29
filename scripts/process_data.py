@@ -210,9 +210,10 @@ class ProcessData:
 
 if __name__ == '__main__':
     pd = ProcessData()
-    # pd.cafe_count()
-    # pd.best_restaurants()
-    # pd.avg_comments_rate()
-    # pd.avg_price()
-    # pd.ratio_diff_rate()
+    pd.cafe_count()
+    pd.best_restaurants()
+    pd.avg_comments_rate()
+    pd.avg_price()
+    pd.ratio_diff_rate()
     pd.ratio_diff_rate_general()
+    

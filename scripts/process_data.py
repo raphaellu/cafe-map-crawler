@@ -3,6 +3,7 @@ from pymongo import MongoClient
 from re import *
 from Store import Store
 from heapq import *
+from constants import *
 
 client = MongoClient()
 db = client.restaurants
@@ -26,25 +27,6 @@ xuhui = db.xuhui.find()
 yangpu = db.yangpu.find()
 zhabei = db.zhabei.find()
 
-names = {
-'宝山': 'Baoshan', 
-'长宁': 'Changning', 
-'崇明': 'Chongming', 
-'奉贤': 'Fengxian', 
-'虹口': 'Hongkou', 
-'黄浦': 'Huangpu', 
-'嘉定': 'Jiading', 
-'静安': 'Jingan',
-'金山': 'Jinshan', 
-'卢湾': 'Luwan', 
-'闵行': 'Minhang', 
-'浦东': 'Pudong', 
-'普陀': 'Putuo', 
-'青浦': 'Qingpu', 
-'松江': 'Songjiang', 
-'徐汇': 'Xuhui', 
-'杨浦': 'Yangpu', 
-'闸北': 'Zhabei' }
 
 all_districts = {
 '宝山': baoshan, 
@@ -72,7 +54,6 @@ class ProcessData:
     #number of cafés in every district of Shanghai
     def cafe_count(self):
         global all_districts
-        global names
         fo = open("cafe_count.csv", "wb")
         fo.write("Area (CN),Number of Cafés,Area (EN)\n")
         for district in all_districts:
@@ -87,18 +68,17 @@ class ProcessData:
     #list of top 5 restaurants in every district of Shanghai
     def best_restaurants(self): 
         global all_districts
-        global names
         fo = open("best_restaurants.csv", "wb")
         fo.write("Area (CN),restaurant name, overall rate, average price, num of comments, Area (EN)\n")
         for district in all_districts:
             heap = []
             for store in all_districts[district]:
-                if (store['dish_type'] == u'咖啡厅' or store['dish_type'] == u'面包甜点') and store['price'] != '-' and int(store['num_comment']) >= 600: 
+                if (store['dish_type'] == u'咖啡厅') and store['price'] != '-' and int(store['num_comment']) >= 1000: 
                     s = Store(store)
                     heappush(heap, s)
 
             unique_stores = set([])      
-            while len(unique_stores) < 5 and len(heap) > 0:
+            while len(unique_stores) < 3 and len(heap) > 0:
                 s = heappop(heap)
                 title = u''.join(s.title).encode('utf-8').strip()
                 price = u''.join(s.price).encode('utf-8').strip()
@@ -110,7 +90,6 @@ class ProcessData:
 
     def avg_comments_rate(self):
         global all_districts
-        global names
         fo = open("avg_comments_rate.csv", "wb")
         fo.write("Area (CN), average num of comments, average rate, Area (EN)\n")
         for district in all_districts:
@@ -133,7 +112,6 @@ class ProcessData:
 
     def avg_price(self):
         global all_districts
-        global names
         fo = open("avg_price.csv", "wb")
         fo.write("Area (CN), average price, Area (EN)\n")
         for district in all_districts:
@@ -151,7 +129,6 @@ class ProcessData:
 
     def ratio_diff_rate(self):
         global all_districts
-        global names
         fo = open("ratio_diff_rate.csv", "wb")
         fo.write("Area (CN), avg flv ratio, avg srv ratio, avg env ratio, Area (EN)\n")
         for district in all_districts:
@@ -181,7 +158,6 @@ class ProcessData:
 
     def ratio_diff_rate_general(self):
         global all_districts
-        global names
         fo = open("ratio_diff_rate_general.csv", "wb")
         fo.write("Area (CN), avg flv ratio, avg srv ratio, avg env ratio, Area (EN)\n")
         for district in all_districts:
@@ -208,12 +184,40 @@ class ProcessData:
                 + names[district] + "\n")
         fo.close()
 
+
+    def cafe_per_person(self):
+        global all_districts
+        fo = open("cafe_per_person.csv", "wb")
+        fo.write("Area (CN),Num of Cafés per 1,000 people,Area (EN)\n")
+        for district in all_districts:
+            count = 0
+            for store in all_districts[district]:
+                if (store['dish_type'] == u'咖啡厅' or store['dish_type'] == u'面包甜点'):
+                    count += 1
+            fo.write(district + "," + str("%.3f" %(float(count)/float(district_population[district] * 10))) + "," + names[district] + "\n")
+        fo.close()    
+
+    def cafe_per_sqr_km(self):
+        global all_districts
+        fo = open("cafe_per_sqr_km.csv", "wb")
+        fo.write("Area (CN),Num of Cafés per sqr km,Area (EN)\n")
+        for district in all_districts:
+            count = 0
+            for store in all_districts[district]:
+                if (store['dish_type'] == u'咖啡厅' or store['dish_type'] == u'面包甜点'):
+                    count += 1
+            fo.write(district + "," + str("%.3f" % (float(count)/float(district_size[district]))) + "," + names[district] + "\n")
+        fo.close()    
+
+
+
 if __name__ == '__main__':
     pd = ProcessData()
-    pd.cafe_count()
+    # pd.cafe_count()
     pd.best_restaurants()
-    pd.avg_comments_rate()
-    pd.avg_price()
-    pd.ratio_diff_rate()
-    pd.ratio_diff_rate_general()
-    
+    # pd.avg_comments_rate()
+    # pd.avg_price()
+    # pd.ratio_diff_rate()
+    # pd.ratio_diff_rate_general()
+    # pd.cafe_per_person()
+    # pd.cafe_per_sqr_km()

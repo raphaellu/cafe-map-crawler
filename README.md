@@ -1,4 +1,4 @@
-# dp-crawler
+# cafe-map-crawler
 ## Description
 A web crawler that collects the basic information of 82,463 restaurants in Shanghai, including title, rate, area, address and average price per person for every restaurant.
 
